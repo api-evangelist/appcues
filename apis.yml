@@ -3,21 +3,39 @@ url: https://raw.githubusercontent.com/api-evangelist/appcues/refs/heads/main/ap
 name: Appcues
 x-type: company
 description: >-
-  Appcues is an in-app onboarding, announcement, and engagement platform for web and mobile SaaS products, with no-code flow building and event-driven targeting.
+  Appcues is a product-led growth platform for in-app onboarding, announcements, surveys, and user engagement experiences.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - Product
   - Onboarding
-  - In-App
-  - Engagement
-  - SaaS
+  - In-App Guidance
+  - Analytics
+  - Customer Success
 created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.19'
-apis: []
+apis:
+  - aid: appcues:appcues-public-api
+    name: Appcues Public API
+    description: >-
+      Appcues Public API exposes flows, mobile experiences, pins, launchpads, banners, checklists, embeds, NPS, segments, users, groups, events, jobs, and SDK key management. US and EU regions are supported.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://api.appcues.com/
+    baseURL: https://api.appcues.com
+    tags:
+      - Product
+      - Onboarding
+      - REST
+    properties:
+      - type: Documentation
+        url: https://api.appcues.com/
+      - type: Developers
+        url: https://docs.appcues.com/dev-overview/
 common:
   - type: Website
     url: https://www.appcues.com/
+  - type: Documentation
+    url: https://api.appcues.com/
   - type: Plans
     url: plans/appcues-plans-pricing.yml
   - type: RateLimits
