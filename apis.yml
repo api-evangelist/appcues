@@ -1,7 +1,7 @@
 aid: appcues
 url: https://raw.githubusercontent.com/api-evangelist/appcues/refs/heads/main/apis.yml
 name: Appcues
-x-type: company
+kind: company
 description: >-
   Appcues is a product-led growth platform for in-app onboarding, announcements, surveys, and user engagement experiences.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
