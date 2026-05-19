@@ -32,6 +32,10 @@ apis:
       - type: Developers
         url: https://docs.appcues.com/dev-overview/
 common:
+  - type: GitHubOrganization
+    url: https://github.com/appcues
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/appcues
   - type: Website
     url: https://www.appcues.com/
   - type: Documentation
