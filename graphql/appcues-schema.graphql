@@ -1,0 +1,1030 @@
+"""
+Appcues GraphQL Schema
+Conceptual schema for the Appcues product-led growth and in-app onboarding platform.
+Source: https://api.appcues.com/ and https://docs.appcues.com/dev-docs
+"""
+
+# ---------------------------------------------------------------------------
+# Scalars
+# ---------------------------------------------------------------------------
+
+scalar DateTime
+scalar JSON
+scalar URL
+
+# ---------------------------------------------------------------------------
+# Enums
+# ---------------------------------------------------------------------------
+
+enum FlowType {
+  TOUR
+  MODAL
+  SLIDEOUT
+  TOOLTIP
+  BANNER
+  HOTSPOT
+  NPS
+  ANNOUNCEMENT
+}
+
+enum FlowStatus {
+  DRAFT
+  PUBLISHED
+  PAUSED
+  ARCHIVED
+}
+
+enum StepType {
+  MODAL
+  TOOLTIP
+  HOTSPOT
+  BANNER
+  FORM
+  NUDGE
+  SLIDEOUT
+}
+
+enum ChecklistItemStatus {
+  INCOMPLETE
+  COMPLETE
+  SKIPPED
+}
+
+enum TriggerType {
+  PAGE_VISIT
+  EVENT
+  MANUAL
+  SCHEDULED
+  ELEMENT_CLICK
+}
+
+enum ConditionOperator {
+  EQUALS
+  NOT_EQUALS
+  CONTAINS
+  NOT_CONTAINS
+  STARTS_WITH
+  ENDS_WITH
+  GREATER_THAN
+  LESS_THAN
+  GREATER_THAN_OR_EQUAL
+  LESS_THAN_OR_EQUAL
+  EXISTS
+  NOT_EXISTS
+}
+
+enum PropertyType {
+  STRING
+  NUMBER
+  BOOLEAN
+  DATE
+  LIST
+}
+
+enum WebhookEventType {
+  FLOW_VIEWED
+  FLOW_COMPLETED
+  FLOW_DISMISSED
+  STEP_VIEWED
+  STEP_COMPLETED
+  CHECKLIST_COMPLETED
+  CHECKLIST_ITEM_COMPLETED
+  NPS_SUBMITTED
+  FORM_SUBMITTED
+}
+
+enum ContentAlignment {
+  LEFT
+  CENTER
+  RIGHT
+}
+
+enum BannerPosition {
+  TOP
+  BOTTOM
+}
+
+enum Region {
+  US
+  EU
+}
+
+# ---------------------------------------------------------------------------
+# Flow Types
+# ---------------------------------------------------------------------------
+
+"""A flow is a core in-app experience composed of one or more steps."""
+type Flow {
+  id: ID!
+  accountId: String!
+  name: String!
+  type: FlowType!
+  status: FlowStatus!
+  published: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  publishedAt: DateTime
+  tags: [String!]
+}
+
+"""Full flow record including content, targeting, and configuration."""
+type FlowDetails {
+  id: ID!
+  accountId: String!
+  name: String!
+  type: FlowType!
+  status: FlowStatus!
+  published: Boolean!
+  steps: [Step!]!
+  trigger: FlowTrigger
+  audience: FlowAudience
+  goal: FlowGoal
+  content: FlowContent
+  frequency: String
+  priority: Int
+  locale: String
+  tags: [String!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  publishedAt: DateTime
+  createdBy: String
+  updatedBy: String
+}
+
+"""Trigger conditions that determine when a flow is launched."""
+type FlowTrigger {
+  id: ID!
+  type: TriggerType!
+  page: String
+  eventName: String
+  elementSelector: String
+  delay: Int
+  conditions: [JSON]
+}
+
+"""Audience targeting rules applied to a flow."""
+type FlowAudience {
+  id: ID!
+  audienceId: String
+  conditions: [JSON]
+  matchType: String
+}
+
+"""Conversion goal attached to a flow."""
+type FlowGoal {
+  id: ID!
+  name: String!
+  eventName: String
+  page: String
+  timeoutSeconds: Int
+}
+
+"""Serialized content payload for a flow."""
+type FlowContent {
+  locale: String
+  theme: JSON
+  customCss: String
+  customJs: String
+}
+
+# ---------------------------------------------------------------------------
+# Step Types
+# ---------------------------------------------------------------------------
+
+"""An individual step within a flow."""
+type Step {
+  id: ID!
+  flowId: String!
+  type: StepType!
+  position: Int!
+  name: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""Full step record with content, layout, and targeting."""
+type StepDetails {
+  id: ID!
+  flowId: String!
+  type: StepType!
+  position: Int!
+  name: String
+  content: StepContent
+  selector: String
+  skippable: Boolean
+  backable: Boolean
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""Rich content block payload within a step."""
+type StepContent {
+  title: String
+  body: String
+  primaryButtonText: String
+  secondaryButtonText: String
+  imageUrl: URL
+  videoUrl: URL
+  alignment: ContentAlignment
+  customHtml: String
+  blocks: [JSON]
+}
+
+"""Step subtype with form fields and submission handling."""
+type FormStep {
+  id: ID!
+  flowId: String!
+  position: Int!
+  fields: [FormField!]!
+  submitLabel: String
+  skipLabel: String
+  content: StepContent
+}
+
+"""A single field within a form step."""
+type FormField {
+  id: ID!
+  type: String!
+  label: String!
+  placeholder: String
+  required: Boolean!
+  options: [String]
+}
+
+"""Step subtype anchored to a specific DOM element."""
+type TooltipStep {
+  id: ID!
+  flowId: String!
+  position: Int!
+  selector: String!
+  placement: String
+  content: StepContent
+  skippable: Boolean
+}
+
+"""Step subtype rendered as a centered overlay modal."""
+type ModalStep {
+  id: ID!
+  flowId: String!
+  position: Int!
+  content: StepContent
+  size: String
+  skippable: Boolean
+}
+
+"""Step subtype rendered as a pulsing beacon anchored to an element."""
+type HotspotStep {
+  id: ID!
+  flowId: String!
+  position: Int!
+  selector: String!
+  content: StepContent
+  color: String
+}
+
+"""Step subtype rendered as a persistent top or bottom banner."""
+type BannerStep {
+  id: ID!
+  flowId: String!
+  position: Int!
+  content: StepContent
+  position_type: BannerPosition
+  dismissible: Boolean
+}
+
+"""Step subtype for subtle non-intrusive in-app nudges."""
+type NudgeStep {
+  id: ID!
+  flowId: String!
+  position: Int!
+  content: StepContent
+  selector: String
+}
+
+# ---------------------------------------------------------------------------
+# Audience and Segmentation Types
+# ---------------------------------------------------------------------------
+
+"""A reusable audience definition with targeting conditions."""
+type Audience {
+  id: ID!
+  accountId: String!
+  name: String!
+  description: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""Full audience record with all targeting conditions."""
+type AudienceDetails {
+  id: ID!
+  accountId: String!
+  name: String!
+  description: String
+  conditions: [JSON!]
+  matchType: String
+  estimatedSize: Int
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  createdBy: String
+}
+
+"""Condition that targets users belonging to a named segment."""
+type SegmentCondition {
+  id: ID!
+  segmentId: String!
+  segmentName: String
+  negate: Boolean
+}
+
+"""Condition comparing a user or company property to a value."""
+type PropertyCondition {
+  id: ID!
+  property: String!
+  operator: ConditionOperator!
+  value: JSON
+  propertyType: PropertyType
+}
+
+"""Condition based on whether a user has fired a specific event."""
+type EventCondition {
+  id: ID!
+  eventName: String!
+  operator: ConditionOperator!
+  count: Int
+  withinDays: Int
+}
+
+"""Condition based on the current page URL or URL pattern."""
+type PageCondition {
+  id: ID!
+  pattern: String!
+  matchType: String
+  negate: Boolean
+}
+
+"""Condition based on a company-level property."""
+type CompanyCondition {
+  id: ID!
+  property: String!
+  operator: ConditionOperator!
+  value: JSON
+}
+
+# ---------------------------------------------------------------------------
+# Checklist Types
+# ---------------------------------------------------------------------------
+
+"""An in-app onboarding checklist experience."""
+type Checklist {
+  id: ID!
+  accountId: String!
+  name: String!
+  published: Boolean!
+  itemCount: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""Full checklist record including items and targeting configuration."""
+type ChecklistDetails {
+  id: ID!
+  accountId: String!
+  name: String!
+  title: String
+  description: String
+  published: Boolean!
+  items: [ChecklistItem!]!
+  audience: FlowAudience
+  completionMessage: String
+  dismissible: Boolean
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""An individual task item within a checklist."""
+type ChecklistItem {
+  id: ID!
+  checklistId: String!
+  title: String!
+  description: String
+  position: Int!
+  completionEvent: String
+  completionPage: String
+  linkedFlowId: String
+  linkedUrl: URL
+  status: ChecklistItemStatus
+}
+
+# ---------------------------------------------------------------------------
+# Pin Types
+# ---------------------------------------------------------------------------
+
+"""A persistent anchored tooltip or callout attached to a UI element."""
+type Pin {
+  id: ID!
+  accountId: String!
+  name: String!
+  published: Boolean!
+  selector: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""Full pin record with content and targeting configuration."""
+type PinDetails {
+  id: ID!
+  accountId: String!
+  name: String!
+  selector: String!
+  placement: String
+  content: PinContent
+  audience: FlowAudience
+  published: Boolean!
+  dismissible: Boolean
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""Rich content payload for a pin experience."""
+type PinContent {
+  title: String
+  body: String
+  imageUrl: URL
+  primaryButtonText: String
+  primaryButtonUrl: URL
+  customHtml: String
+}
+
+# ---------------------------------------------------------------------------
+# NPS and Survey Types
+# ---------------------------------------------------------------------------
+
+"""NPS survey configuration record."""
+type NPS {
+  id: ID!
+  accountId: String!
+  name: String!
+  published: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""Full NPS survey record including follow-up question configuration."""
+type NPSSurvey {
+  id: ID!
+  accountId: String!
+  name: String!
+  question: String!
+  followUpDetractors: String
+  followUpPassives: String
+  followUpPromoters: String
+  audience: FlowAudience
+  published: Boolean!
+  frequency: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""An individual user's response to an NPS survey."""
+type NPSResponse {
+  id: ID!
+  surveyId: String!
+  userId: String!
+  score: Int!
+  followUpText: String
+  respondedAt: DateTime!
+  userProperties: JSON
+}
+
+# ---------------------------------------------------------------------------
+# User and Company Types
+# ---------------------------------------------------------------------------
+
+"""An Appcues user identity record."""
+type User {
+  id: ID!
+  accountId: String!
+  userId: String!
+  createdAt: DateTime!
+  lastSeenAt: DateTime
+  properties: JSON
+}
+
+"""Extended user profile with all attributes and metadata."""
+type UserProfile {
+  id: ID!
+  accountId: String!
+  userId: String!
+  email: String
+  name: String
+  properties: JSON
+  segments: [String]
+  companyId: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  lastSeenAt: DateTime
+  sessionCount: Int
+  flowsViewed: Int
+  flowsCompleted: Int
+}
+
+"""User engagement and interaction history."""
+type UserActivity {
+  userId: String!
+  accountId: String!
+  events: [Event!]
+  flowViews: [FlowView!]
+  flowCompletions: [FlowComplete!]
+  checklistCompletions: [String]
+  npsResponses: [NPSResponse!]
+  lastActiveAt: DateTime
+}
+
+"""A company (account) record used for B2B targeting."""
+type Company {
+  id: ID!
+  accountId: String!
+  companyId: String!
+  name: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  properties: JSON
+}
+
+"""Full company record with properties and member list."""
+type CompanyDetails {
+  id: ID!
+  accountId: String!
+  companyId: String!
+  name: String
+  plan: String
+  properties: JSON
+  memberCount: Int
+  members: [User]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+# ---------------------------------------------------------------------------
+# Event and Property Types
+# ---------------------------------------------------------------------------
+
+"""A user or company event tracked by Appcues."""
+type Event {
+  id: ID!
+  accountId: String!
+  name: String!
+  userId: String
+  companyId: String
+  properties: JSON
+  occurredAt: DateTime!
+}
+
+"""Full event record with properties and metadata."""
+type EventDetails {
+  id: ID!
+  accountId: String!
+  name: String!
+  description: String
+  userId: String
+  companyId: String
+  properties: [EventProperty!]
+  occurredAt: DateTime!
+  sessionId: String
+  page: String
+}
+
+"""A key-value property attached to an event."""
+type EventProperty {
+  key: String!
+  value: JSON
+  type: PropertyType
+}
+
+"""A user or company attribute definition."""
+type Property {
+  id: ID!
+  accountId: String!
+  name: String!
+  type: PropertyType!
+  source: String
+  lastSeenAt: DateTime
+  isCustom: Boolean!
+}
+
+"""Metadata about a tracked property including type and source."""
+type PropertyDefinition {
+  id: ID!
+  accountId: String!
+  name: String!
+  displayName: String
+  type: PropertyType!
+  source: String
+  description: String
+  exampleValues: [JSON]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+# ---------------------------------------------------------------------------
+# Installation and SDK Types
+# ---------------------------------------------------------------------------
+
+"""Appcues SDK installation record for an account."""
+type Installation {
+  id: ID!
+  accountId: String!
+  region: Region!
+  sdkVersion: String
+  installedAt: DateTime
+  lastVerifiedAt: DateTime
+  domains: [String]
+}
+
+"""Full installation record with configuration and SDK details."""
+type InstallationDetails {
+  id: ID!
+  accountId: String!
+  region: Region!
+  sdkVersion: String
+  accountToken: String
+  domains: [String]
+  settings: JSON
+  installedAt: DateTime
+  lastVerifiedAt: DateTime
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""An API key for authenticating with the Appcues Public API."""
+type APIKey {
+  id: ID!
+  accountId: String!
+  name: String!
+  prefix: String!
+  scopes: [String!]
+  createdAt: DateTime!
+  expiresAt: DateTime
+  lastUsedAt: DateTime
+  createdBy: String
+}
+
+"""A short-lived authentication token."""
+type Token {
+  token: String!
+  expiresAt: DateTime!
+  tokenType: String!
+}
+
+"""A webhook subscription for receiving Appcues event notifications."""
+type Webhook {
+  id: ID!
+  accountId: String!
+  url: URL!
+  events: [WebhookEventType!]!
+  active: Boolean!
+  secret: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  lastTriggeredAt: DateTime
+  failureCount: Int
+}
+
+# ---------------------------------------------------------------------------
+# Analytics Types
+# ---------------------------------------------------------------------------
+
+"""Aggregate analytics for a flow covering views, completions, and dropoff."""
+type FlowAnalytics {
+  flowId: String!
+  accountId: String!
+  period: String
+  views: Int!
+  uniqueViews: Int!
+  completions: Int!
+  completionRate: Float!
+  dismissals: Int!
+  dismissalRate: Float!
+  stepDropoff: [StepDropoff!]
+  goalConversions: [GoalConversion!]
+}
+
+"""Dropoff statistics for a single step within a flow."""
+type StepDropoff {
+  stepId: String!
+  stepPosition: Int!
+  views: Int!
+  completions: Int!
+  dropoffRate: Float!
+}
+
+"""A goal conversion event tied to a specific flow."""
+type GoalConversion {
+  id: ID!
+  flowId: String!
+  goalId: String!
+  goalName: String!
+  userId: String
+  convertedAt: DateTime!
+  timeToConvertSeconds: Int
+}
+
+"""An individual flow view event for a user."""
+type FlowView {
+  id: ID!
+  flowId: String!
+  userId: String!
+  sessionId: String
+  viewedAt: DateTime!
+  page: String
+  locale: String
+}
+
+"""An individual flow completion event for a user."""
+type FlowComplete {
+  id: ID!
+  flowId: String!
+  userId: String!
+  sessionId: String
+  completedAt: DateTime!
+  durationSeconds: Int
+  stepsCompleted: Int
+}
+
+# ---------------------------------------------------------------------------
+# Content and Navigation Types
+# ---------------------------------------------------------------------------
+
+"""Top-level wrapper for any Appcues experience type."""
+type Experience {
+  id: ID!
+  accountId: String!
+  type: String!
+  name: String!
+  published: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""Paginated content listing for list queries."""
+type ContentPage {
+  items: [JSON!]!
+  total: Int!
+  page: Int!
+  limit: Int!
+  hasNextPage: Boolean!
+}
+
+"""An item within an in-app launchpad widget."""
+type LaunchpadItem {
+  id: ID!
+  accountId: String!
+  title: String!
+  description: String
+  iconUrl: URL
+  linkUrl: URL
+  linkedFlowId: String
+  position: Int!
+  published: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+# ---------------------------------------------------------------------------
+# Input Types
+# ---------------------------------------------------------------------------
+
+input FlowInput {
+  name: String!
+  type: FlowType!
+  tags: [String]
+}
+
+input AudienceInput {
+  name: String!
+  description: String
+  conditions: [JSON!]!
+  matchType: String
+}
+
+input ChecklistInput {
+  name: String!
+  title: String
+  description: String
+  items: [ChecklistItemInput!]
+  dismissible: Boolean
+}
+
+input ChecklistItemInput {
+  title: String!
+  description: String
+  position: Int!
+  completionEvent: String
+  linkedFlowId: String
+  linkedUrl: URL
+}
+
+input PinInput {
+  name: String!
+  selector: String!
+  placement: String
+  content: PinContentInput
+  dismissible: Boolean
+}
+
+input PinContentInput {
+  title: String
+  body: String
+  imageUrl: URL
+  primaryButtonText: String
+  primaryButtonUrl: URL
+}
+
+input UserIdentifyInput {
+  properties: JSON
+  companyId: String
+}
+
+input CompanyIdentifyInput {
+  name: String
+  properties: JSON
+}
+
+input TrackEventInput {
+  eventName: String!
+  properties: JSON
+}
+
+input WebhookInput {
+  url: URL!
+  events: [WebhookEventType!]!
+  secret: String
+}
+
+input DateRangeInput {
+  startDate: DateTime!
+  endDate: DateTime!
+}
+
+input FlowFilterInput {
+  status: FlowStatus
+  type: FlowType
+  tags: [String]
+  search: String
+}
+
+input UserFilterInput {
+  segmentId: String
+  properties: JSON
+  search: String
+}
+
+# ---------------------------------------------------------------------------
+# Root Types
+# ---------------------------------------------------------------------------
+
+type Query {
+  """Fetch a single flow by account and flow ID."""
+  flow(accountId: String!, flowId: ID!): FlowDetails
+
+  """List flows for an account with optional filtering and pagination."""
+  flows(accountId: String!, filter: FlowFilterInput, page: Int, limit: Int): ContentPage
+
+  """Fetch a single step within a flow."""
+  step(accountId: String!, flowId: ID!, stepId: ID!): StepDetails
+
+  """Fetch a single reusable audience by ID."""
+  audience(accountId: String!, audienceId: ID!): AudienceDetails
+
+  """List all audiences for an account."""
+  audiences(accountId: String!, page: Int, limit: Int): ContentPage
+
+  """Fetch a single checklist by ID."""
+  checklist(accountId: String!, checklistId: ID!): ChecklistDetails
+
+  """List all checklists for an account."""
+  checklists(accountId: String!, page: Int, limit: Int): ContentPage
+
+  """Fetch a single pin by ID."""
+  pin(accountId: String!, pinId: ID!): PinDetails
+
+  """List all pins for an account."""
+  pins(accountId: String!, page: Int, limit: Int): ContentPage
+
+  """Fetch a single NPS survey by ID."""
+  nps(accountId: String!, npsId: ID!): NPSSurvey
+
+  """List all NPS surveys for an account."""
+  npsSurveys(accountId: String!, page: Int, limit: Int): ContentPage
+
+  """Fetch NPS responses for a survey."""
+  npsResponses(accountId: String!, npsId: ID!, page: Int, limit: Int): ContentPage
+
+  """Fetch a user profile by user ID."""
+  user(accountId: String!, userId: String!): UserProfile
+
+  """List users for an account with optional filtering."""
+  users(accountId: String!, filter: UserFilterInput, page: Int, limit: Int): ContentPage
+
+  """Fetch user engagement and interaction history."""
+  userActivity(accountId: String!, userId: String!): UserActivity
+
+  """Fetch a company record by company ID."""
+  company(accountId: String!, companyId: String!): CompanyDetails
+
+  """List companies for an account."""
+  companies(accountId: String!, filter: UserFilterInput, page: Int, limit: Int): ContentPage
+
+  """Fetch a tracked event definition by name."""
+  event(accountId: String!, eventName: String!): EventDetails
+
+  """List all tracked event definitions for an account."""
+  events(accountId: String!, page: Int, limit: Int): ContentPage
+
+  """Fetch a user or company property definition."""
+  property(accountId: String!, name: String!): PropertyDefinition
+
+  """List all property definitions for an account."""
+  properties(accountId: String!, page: Int, limit: Int): ContentPage
+
+  """Fetch aggregate flow analytics."""
+  flowAnalytics(accountId: String!, flowId: ID!, dateRange: DateRangeInput): FlowAnalytics
+
+  """List goal conversion events for a flow."""
+  goalConversions(accountId: String!, flowId: ID!, dateRange: DateRangeInput, page: Int, limit: Int): ContentPage
+
+  """Fetch installation details for an account."""
+  installation(accountId: String!): InstallationDetails
+
+  """List all API keys for an account."""
+  apiKeys(accountId: String!): [APIKey!]
+
+  """List all webhook subscriptions for an account."""
+  webhooks(accountId: String!): [Webhook!]
+
+  """List all launchpad items for an account."""
+  launchpadItems(accountId: String!): [LaunchpadItem!]
+
+  """List all experiences across all types for an account."""
+  experiences(accountId: String!, page: Int, limit: Int): ContentPage
+}
+
+type Mutation {
+  """Create a new flow."""
+  createFlow(accountId: String!, input: FlowInput!): FlowDetails
+
+  """Update an existing flow's metadata or settings."""
+  updateFlow(accountId: String!, flowId: ID!, input: FlowInput!): FlowDetails
+
+  """Publish a draft flow to make it live for users."""
+  publishFlow(accountId: String!, flowId: ID!): FlowDetails
+
+  """Pause a published flow."""
+  pauseFlow(accountId: String!, flowId: ID!): FlowDetails
+
+  """Archive a flow."""
+  archiveFlow(accountId: String!, flowId: ID!): FlowDetails
+
+  """Create a new reusable audience."""
+  createAudience(accountId: String!, input: AudienceInput!): AudienceDetails
+
+  """Update an existing audience's conditions."""
+  updateAudience(accountId: String!, audienceId: ID!, input: AudienceInput!): AudienceDetails
+
+  """Delete an audience."""
+  deleteAudience(accountId: String!, audienceId: ID!): Boolean
+
+  """Create a new checklist."""
+  createChecklist(accountId: String!, input: ChecklistInput!): ChecklistDetails
+
+  """Update an existing checklist."""
+  updateChecklist(accountId: String!, checklistId: ID!, input: ChecklistInput!): ChecklistDetails
+
+  """Create a new pin."""
+  createPin(accountId: String!, input: PinInput!): PinDetails
+
+  """Update an existing pin."""
+  updatePin(accountId: String!, pinId: ID!, input: PinInput!): PinDetails
+
+  """Identify (upsert) a user with the provided properties."""
+  identifyUser(accountId: String!, userId: String!, input: UserIdentifyInput!): UserProfile
+
+  """Track a custom event for a user."""
+  trackEvent(accountId: String!, userId: String!, input: TrackEventInput!): Event
+
+  """Identify (upsert) a company with the provided properties."""
+  identifyCompany(accountId: String!, companyId: String!, input: CompanyIdentifyInput!): CompanyDetails
+
+  """Create a new webhook subscription."""
+  createWebhook(accountId: String!, input: WebhookInput!): Webhook
+
+  """Update an existing webhook subscription."""
+  updateWebhook(accountId: String!, webhookId: ID!, input: WebhookInput!): Webhook
+
+  """Delete a webhook subscription."""
+  deleteWebhook(accountId: String!, webhookId: ID!): Boolean
+
+  """Rotate an API key, invalidating the old key."""
+  rotateAPIKey(accountId: String!, keyId: ID!): APIKey
+}
