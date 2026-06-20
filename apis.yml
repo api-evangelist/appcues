@@ -4,7 +4,7 @@ name: Appcues
 kind: company
 description: Appcues is a product-led growth platform for in-app onboarding, announcements,
   surveys, and user engagement experiences.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - Product
 - Onboarding
@@ -20,7 +20,7 @@ apis:
   description: Appcues Public API exposes flows, mobile experiences, pins, launchpads,
     banners, checklists, embeds, NPS, segments, users, groups, events, jobs, and SDK
     key management. US and EU regions are supported.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://api.appcues.com/
   baseURL: https://api.appcues.com
   tags:
