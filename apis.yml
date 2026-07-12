@@ -35,6 +35,10 @@ apis:
   - url: graphql/appcues-graphql.md
     type: GraphQL
 common:
+- type: DomainSecurity
+  url: security/appcues-domain-security.yml
+- type: Authentication
+  url: authentication/appcues-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/appcues
 - type: LinkedIn
@@ -49,6 +53,8 @@ common:
   url: rate-limits/appcues-rate-limits.yml
 - type: FinOps
   url: finops/appcues-finops.yml
+- type: Blog
+  url: https://www.appcues.com/blog
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

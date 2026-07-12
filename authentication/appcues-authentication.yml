@@ -1,0 +1,13 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/appcues-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: BasicAuth
+  type: http
+  scheme: basic
+  description: HTTP Basic authentication using API_KEY as username and API_SECRET as password.
+  sources:
+  - openapi/appcues-openapi.yml
