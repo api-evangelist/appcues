@@ -1,0 +1,14 @@
+{
+  "repo": "appcues",
+  "feeds": [
+    {
+      "source": "https://www.appcues.com/blog",
+      "feed_url": "https://www.appcues.com/blog",
+      "title": "Appcues Blog",
+      "saved": 0,
+      "error": "parse_failed"
+    }
+  ],
+  "fetched": "2026-07-11T11:43:46Z",
+  "post_count": 7
+}
