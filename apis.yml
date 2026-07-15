@@ -35,6 +35,8 @@ apis:
   - url: graphql/appcues-graphql.md
     type: GraphQL
 common:
+- type: AgenticAccess
+  url: agentic-access/appcues-agentic-access.yml
 - type: DomainSecurity
   url: security/appcues-domain-security.yml
 - type: Authentication
