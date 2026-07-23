@@ -1,0 +1,80 @@
+openapi: 3.1.0
+info:
+  title: Appcues Public Banners Users API
+  version: '2.0'
+  description: 'The Appcues Public API exposes programmatic access to Appcues flows,
+
+    mobile experiences, pins, launchpads, banners, checklists, embeds, NPS,
+
+    segments, users, groups, events, and offline jobs. US and EU regions are
+
+    supported. Authentication uses HTTP Basic with an API key as the username
+
+    and API secret as the password.
+
+    '
+  contact:
+    name: Appcues Developers
+    url: https://docs.appcues.com/dev-overview/
+servers:
+- url: https://api.appcues.com
+  description: US region
+- url: https://api.eu.appcues.com
+  description: EU region
+security:
+- BasicAuth: []
+tags:
+- name: Users
+paths:
+  /v2/accounts/{account_id}/users/{user_id}/profile:
+    get:
+      tags:
+      - Users
+      summary: Get user profile
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - $ref: '#/components/parameters/UserId'
+      responses:
+        '200':
+          description: OK
+    patch:
+      tags:
+      - Users
+      summary: Update user profile
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - $ref: '#/components/parameters/UserId'
+      responses:
+        '200':
+          description: OK
+    delete:
+      tags:
+      - Users
+      summary: Delete user profile
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - $ref: '#/components/parameters/UserId'
+      responses:
+        '204':
+          description: Deleted
+components:
+  parameters:
+    UserId:
+      name: user_id
+      in: path
+      required: true
+      description: End-user identifier
+      schema:
+        type: string
+    AccountId:
+      name: account_id
+      in: path
+      required: true
+      description: Appcues account identifier
+      schema:
+        type: string
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using API_KEY as username and API_SECRET as password.

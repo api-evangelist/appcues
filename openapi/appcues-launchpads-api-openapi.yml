@@ -1,0 +1,97 @@
+openapi: 3.1.0
+info:
+  title: Appcues Public Banners Launchpads API
+  version: '2.0'
+  description: 'The Appcues Public API exposes programmatic access to Appcues flows,
+
+    mobile experiences, pins, launchpads, banners, checklists, embeds, NPS,
+
+    segments, users, groups, events, and offline jobs. US and EU regions are
+
+    supported. Authentication uses HTTP Basic with an API key as the username
+
+    and API secret as the password.
+
+    '
+  contact:
+    name: Appcues Developers
+    url: https://docs.appcues.com/dev-overview/
+servers:
+- url: https://api.appcues.com
+  description: US region
+- url: https://api.eu.appcues.com
+  description: EU region
+security:
+- BasicAuth: []
+tags:
+- name: Launchpads
+paths:
+  /v2/accounts/{account_id}/launchpads:
+    get:
+      tags:
+      - Launchpads
+      summary: List launchpads
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      responses:
+        '200':
+          description: OK
+  /v2/accounts/{account_id}/launchpads/{launchpad_id}:
+    get:
+      tags:
+      - Launchpads
+      summary: Get a launchpad
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: launchpad_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+  /v2/accounts/{account_id}/launchpads/{launchpad_id}/publish:
+    post:
+      tags:
+      - Launchpads
+      summary: Publish a launchpad
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: launchpad_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+  /v2/accounts/{account_id}/launchpads/{launchpad_id}/unpublish:
+    post:
+      tags:
+      - Launchpads
+      summary: Unpublish a launchpad
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: launchpad_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+components:
+  parameters:
+    AccountId:
+      name: account_id
+      in: path
+      required: true
+      description: Appcues account identifier
+      schema:
+        type: string
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using API_KEY as username and API_SECRET as password.

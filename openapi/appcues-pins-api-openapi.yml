@@ -1,0 +1,97 @@
+openapi: 3.1.0
+info:
+  title: Appcues Public Banners Pins API
+  version: '2.0'
+  description: 'The Appcues Public API exposes programmatic access to Appcues flows,
+
+    mobile experiences, pins, launchpads, banners, checklists, embeds, NPS,
+
+    segments, users, groups, events, and offline jobs. US and EU regions are
+
+    supported. Authentication uses HTTP Basic with an API key as the username
+
+    and API secret as the password.
+
+    '
+  contact:
+    name: Appcues Developers
+    url: https://docs.appcues.com/dev-overview/
+servers:
+- url: https://api.appcues.com
+  description: US region
+- url: https://api.eu.appcues.com
+  description: EU region
+security:
+- BasicAuth: []
+tags:
+- name: Pins
+paths:
+  /v2/accounts/{account_id}/pins:
+    get:
+      tags:
+      - Pins
+      summary: List pins
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      responses:
+        '200':
+          description: OK
+  /v2/accounts/{account_id}/pins/{pin_id}:
+    get:
+      tags:
+      - Pins
+      summary: Get a pin
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: pin_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+  /v2/accounts/{account_id}/pins/{pin_id}/publish:
+    post:
+      tags:
+      - Pins
+      summary: Publish a pin
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: pin_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+  /v2/accounts/{account_id}/pins/{pin_id}/unpublish:
+    post:
+      tags:
+      - Pins
+      summary: Unpublish a pin
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: pin_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+components:
+  parameters:
+    AccountId:
+      name: account_id
+      in: path
+      required: true
+      description: Appcues account identifier
+      schema:
+        type: string
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using API_KEY as username and API_SECRET as password.

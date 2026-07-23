@@ -1,0 +1,97 @@
+openapi: 3.1.0
+info:
+  title: Appcues Public Banners Flows API
+  version: '2.0'
+  description: 'The Appcues Public API exposes programmatic access to Appcues flows,
+
+    mobile experiences, pins, launchpads, banners, checklists, embeds, NPS,
+
+    segments, users, groups, events, and offline jobs. US and EU regions are
+
+    supported. Authentication uses HTTP Basic with an API key as the username
+
+    and API secret as the password.
+
+    '
+  contact:
+    name: Appcues Developers
+    url: https://docs.appcues.com/dev-overview/
+servers:
+- url: https://api.appcues.com
+  description: US region
+- url: https://api.eu.appcues.com
+  description: EU region
+security:
+- BasicAuth: []
+tags:
+- name: Flows
+paths:
+  /v2/accounts/{account_id}/flows:
+    get:
+      tags:
+      - Flows
+      summary: List flows
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      responses:
+        '200':
+          description: OK
+  /v2/accounts/{account_id}/flows/{flow_id}:
+    get:
+      tags:
+      - Flows
+      summary: Get a flow
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: flow_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+  /v2/accounts/{account_id}/flows/{flow_id}/publish:
+    post:
+      tags:
+      - Flows
+      summary: Publish a flow
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: flow_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+  /v2/accounts/{account_id}/flows/{flow_id}/unpublish:
+    post:
+      tags:
+      - Flows
+      summary: Unpublish a flow
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: flow_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+components:
+  parameters:
+    AccountId:
+      name: account_id
+      in: path
+      required: true
+      description: Appcues account identifier
+      schema:
+        type: string
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using API_KEY as username and API_SECRET as password.

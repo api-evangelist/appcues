@@ -1,0 +1,72 @@
+openapi: 3.1.0
+info:
+  title: Appcues Public Banners Imports API
+  version: '2.0'
+  description: 'The Appcues Public API exposes programmatic access to Appcues flows,
+
+    mobile experiences, pins, launchpads, banners, checklists, embeds, NPS,
+
+    segments, users, groups, events, and offline jobs. US and EU regions are
+
+    supported. Authentication uses HTTP Basic with an API key as the username
+
+    and API secret as the password.
+
+    '
+  contact:
+    name: Appcues Developers
+    url: https://docs.appcues.com/dev-overview/
+servers:
+- url: https://api.appcues.com
+  description: US region
+- url: https://api.eu.appcues.com
+  description: EU region
+security:
+- BasicAuth: []
+tags:
+- name: Imports
+paths:
+  /v2/accounts/{account_id}/import/profiles:
+    post:
+      tags:
+      - Imports
+      summary: Bulk import user profiles
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      responses:
+        '202':
+          description: Accepted
+  /v2/accounts/{account_id}/import/groups:
+    post:
+      tags:
+      - Imports
+      summary: Bulk import groups
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      responses:
+        '202':
+          description: Accepted
+  /v2/accounts/{account_id}/import/events:
+    post:
+      tags:
+      - Imports
+      summary: Bulk import events
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      responses:
+        '202':
+          description: Accepted
+components:
+  parameters:
+    AccountId:
+      name: account_id
+      in: path
+      required: true
+      description: Appcues account identifier
+      schema:
+        type: string
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using API_KEY as username and API_SECRET as password.

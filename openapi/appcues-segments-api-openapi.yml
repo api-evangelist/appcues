@@ -1,0 +1,149 @@
+openapi: 3.1.0
+info:
+  title: Appcues Public Banners Segments API
+  version: '2.0'
+  description: 'The Appcues Public API exposes programmatic access to Appcues flows,
+
+    mobile experiences, pins, launchpads, banners, checklists, embeds, NPS,
+
+    segments, users, groups, events, and offline jobs. US and EU regions are
+
+    supported. Authentication uses HTTP Basic with an API key as the username
+
+    and API secret as the password.
+
+    '
+  contact:
+    name: Appcues Developers
+    url: https://docs.appcues.com/dev-overview/
+servers:
+- url: https://api.appcues.com
+  description: US region
+- url: https://api.eu.appcues.com
+  description: EU region
+security:
+- BasicAuth: []
+tags:
+- name: Segments
+paths:
+  /v2/accounts/{account_id}/segments:
+    get:
+      tags:
+      - Segments
+      summary: List segments
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      responses:
+        '200':
+          description: OK
+    post:
+      tags:
+      - Segments
+      summary: Create a segment
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      responses:
+        '201':
+          description: Created
+  /v2/accounts/{account_id}/segments/{segment_id}:
+    get:
+      tags:
+      - Segments
+      summary: Get a segment
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: segment_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+    patch:
+      tags:
+      - Segments
+      summary: Update a segment
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: segment_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+    delete:
+      tags:
+      - Segments
+      summary: Delete a segment
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: segment_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Deleted
+  /v2/accounts/{account_id}/segments/{segment_id}/add_user_ids:
+    post:
+      tags:
+      - Segments
+      summary: Add users to a segment
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: segment_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+  /v2/accounts/{account_id}/segments/{segment_id}/remove_user_ids:
+    post:
+      tags:
+      - Segments
+      summary: Remove users from a segment
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: segment_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+  /v2/accounts/{account_id}/segments/{segment_id}/segment_membership_export:
+    post:
+      tags:
+      - Segments
+      summary: Export segment membership
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: segment_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '202':
+          description: Accepted
+components:
+  parameters:
+    AccountId:
+      name: account_id
+      in: path
+      required: true
+      description: Appcues account identifier
+      schema:
+        type: string
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using API_KEY as username and API_SECRET as password.
