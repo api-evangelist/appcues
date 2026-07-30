@@ -4,7 +4,20 @@ name: Appcues
 kind: company
 description: Appcues is a product-led growth platform for in-app onboarding, announcements,
   surveys, and user engagement experiences.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/appcues.png
 tags:
 - Product
 - Onboarding
@@ -17,9 +30,9 @@ specificationVersion: '0.19'
 apis:
 - aid: appcues:appcues-public-api
   name: Appcues Public API
-  description: Appcues Public API exposes flows, mobile experiences, pins, launchpads,
-    banners, checklists, embeds, NPS, segments, users, groups, events, jobs, and SDK
-    key management. US and EU regions are supported.
+  description: >-
+    Appcues Public API exposes flows, mobile experiences, pins, launchpads, banners, checklists, embeds,
+    NPS, segments, users, groups, events, jobs, and SDK key management. US and EU regions are supported.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://api.appcues.com/
   baseURL: https://api.appcues.com
@@ -34,6 +47,136 @@ apis:
     url: https://docs.appcues.com/dev-overview/
   - url: graphql/appcues-graphql.md
     type: GraphQL
+- aid: appcues:appcues-banners-api
+  name: Appcues Banners API
+  description: The Banners API from Appcues — 4 operation(s) for banners.
+  humanURL: https://api.appcues.com/
+  baseURL: https://api.appcues.com
+  tags:
+  - Banners
+  properties:
+  - type: OpenAPI
+    url: openapi/appcues-banners-api-openapi.yml
+- aid: appcues:appcues-events-api
+  name: Appcues Events API
+  description: The Events API from Appcues — 1 operation(s) for events.
+  humanURL: https://api.appcues.com/
+  baseURL: https://api.appcues.com
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/appcues-events-api-openapi.yml
+- aid: appcues:appcues-exports-api
+  name: Appcues Exports API
+  description: The Exports API from Appcues — 1 operation(s) for exports.
+  humanURL: https://api.appcues.com/
+  baseURL: https://api.appcues.com
+  tags:
+  - Exports
+  properties:
+  - type: OpenAPI
+    url: openapi/appcues-exports-api-openapi.yml
+- aid: appcues:appcues-flows-api
+  name: Appcues Flows API
+  description: The Flows API from Appcues — 4 operation(s) for flows.
+  humanURL: https://api.appcues.com/
+  baseURL: https://api.appcues.com
+  tags:
+  - Flows
+  properties:
+  - type: OpenAPI
+    url: openapi/appcues-flows-api-openapi.yml
+- aid: appcues:appcues-groups-api
+  name: Appcues Groups API
+  description: The Groups API from Appcues — 2 operation(s) for groups.
+  humanURL: https://api.appcues.com/
+  baseURL: https://api.appcues.com
+  tags:
+  - Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/appcues-groups-api-openapi.yml
+- aid: appcues:appcues-imports-api
+  name: Appcues Imports API
+  description: The Imports API from Appcues — 3 operation(s) for imports.
+  humanURL: https://api.appcues.com/
+  baseURL: https://api.appcues.com
+  tags:
+  - Imports
+  properties:
+  - type: OpenAPI
+    url: openapi/appcues-imports-api-openapi.yml
+- aid: appcues:appcues-jobs-api
+  name: Appcues Jobs API
+  description: The Jobs API from Appcues — 2 operation(s) for jobs.
+  humanURL: https://api.appcues.com/
+  baseURL: https://api.appcues.com
+  tags:
+  - Jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/appcues-jobs-api-openapi.yml
+- aid: appcues:appcues-launchpads-api
+  name: Appcues Launchpads API
+  description: The Launchpads API from Appcues — 4 operation(s) for launchpads.
+  humanURL: https://api.appcues.com/
+  baseURL: https://api.appcues.com
+  tags:
+  - Launchpads
+  properties:
+  - type: OpenAPI
+    url: openapi/appcues-launchpads-api-openapi.yml
+- aid: appcues:appcues-mobile-api
+  name: Appcues Mobile API
+  description: The Mobile API from Appcues — 4 operation(s) for mobile.
+  humanURL: https://api.appcues.com/
+  baseURL: https://api.appcues.com
+  tags:
+  - Mobile
+  properties:
+  - type: OpenAPI
+    url: openapi/appcues-mobile-api-openapi.yml
+- aid: appcues:appcues-pins-api
+  name: Appcues Pins API
+  description: The Pins API from Appcues — 4 operation(s) for pins.
+  humanURL: https://api.appcues.com/
+  baseURL: https://api.appcues.com
+  tags:
+  - Pins
+  properties:
+  - type: OpenAPI
+    url: openapi/appcues-pins-api-openapi.yml
+- aid: appcues:appcues-segments-api
+  name: Appcues Segments API
+  description: The Segments API from Appcues — 5 operation(s) for segments.
+  humanURL: https://api.appcues.com/
+  baseURL: https://api.appcues.com
+  tags:
+  - Segments
+  properties:
+  - type: OpenAPI
+    url: openapi/appcues-segments-api-openapi.yml
+- aid: appcues:appcues-tags-api
+  name: Appcues Tags API
+  description: The Tags API from Appcues — 2 operation(s) for tags.
+  humanURL: https://api.appcues.com/
+  baseURL: https://api.appcues.com
+  tags:
+  - Tags
+  properties:
+  - type: OpenAPI
+    url: openapi/appcues-tags-api-openapi.yml
+- aid: appcues:appcues-users-api
+  name: Appcues Users API
+  description: The Users API from Appcues — 1 operation(s) for users.
+  humanURL: https://api.appcues.com/
+  baseURL: https://api.appcues.com
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/appcues-users-api-openapi.yml
 common:
 - type: AgenticAccess
   url: agentic-access/appcues-agentic-access.yml
