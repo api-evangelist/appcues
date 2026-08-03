@@ -1,0 +1,505 @@
+openapi: 3.1.0
+info:
+  title: Appcues Public API
+  version: "2.0"
+  description: |
+    The Appcues Public API exposes programmatic access to Appcues flows,
+    mobile experiences, pins, launchpads, banners, checklists, embeds, NPS,
+    segments, users, groups, events, and offline jobs. US and EU regions are
+    supported. Authentication uses HTTP Basic with an API key as the username
+    and API secret as the password.
+  contact:
+    name: Appcues Developers
+    url: https://docs.appcues.com/dev-overview/
+servers:
+  - url: https://api.appcues.com
+    description: US region
+  - url: https://api.eu.appcues.com
+    description: EU region
+tags:
+  - name: Flows
+  - name: Mobile
+  - name: Pins
+  - name: Launchpads
+  - name: Banners
+  - name: Segments
+  - name: Tags
+  - name: Users
+  - name: Groups
+  - name: Events
+  - name: Imports
+  - name: Exports
+  - name: Jobs
+paths:
+  /v2/accounts/{account_id}/flows:
+    get:
+      tags: [Flows]
+      summary: List flows
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+      responses:
+        '200': { description: OK }
+  /v2/accounts/{account_id}/flows/{flow_id}:
+    get:
+      tags: [Flows]
+      summary: Get a flow
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - name: flow_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: OK }
+  /v2/accounts/{account_id}/flows/{flow_id}/publish:
+    post:
+      tags: [Flows]
+      summary: Publish a flow
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - name: flow_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: OK }
+  /v2/accounts/{account_id}/flows/{flow_id}/unpublish:
+    post:
+      tags: [Flows]
+      summary: Unpublish a flow
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - name: flow_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: OK }
+  /v2/accounts/{account_id}/segments:
+    get:
+      tags: [Segments]
+      summary: List segments
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+      responses:
+        '200': { description: OK }
+    post:
+      tags: [Segments]
+      summary: Create a segment
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+      responses:
+        '201': { description: Created }
+  /v2/accounts/{account_id}/segments/{segment_id}:
+    get:
+      tags: [Segments]
+      summary: Get a segment
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - name: segment_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: OK }
+    patch:
+      tags: [Segments]
+      summary: Update a segment
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - name: segment_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: OK }
+    delete:
+      tags: [Segments]
+      summary: Delete a segment
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - name: segment_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '204': { description: Deleted }
+  /v2/accounts/{account_id}/segments/{segment_id}/add_user_ids:
+    post:
+      tags: [Segments]
+      summary: Add users to a segment
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - name: segment_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: OK }
+  /v2/accounts/{account_id}/segments/{segment_id}/remove_user_ids:
+    post:
+      tags: [Segments]
+      summary: Remove users from a segment
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - name: segment_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: OK }
+  /v2/accounts/{account_id}/segments/{segment_id}/segment_membership_export:
+    post:
+      tags: [Segments]
+      summary: Export segment membership
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - name: segment_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '202': { description: Accepted }
+  /v2/accounts/{account_id}/tags:
+    get:
+      tags: [Tags]
+      summary: List tags
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+      responses:
+        '200': { description: OK }
+  /v2/accounts/{account_id}/tags/{tag_id}:
+    get:
+      tags: [Tags]
+      summary: Get a tag
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - name: tag_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: OK }
+  /v2/accounts/{account_id}/users/{user_id}/profile:
+    get:
+      tags: [Users]
+      summary: Get user profile
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - $ref: '#/components/parameters/UserId'
+      responses:
+        '200': { description: OK }
+    patch:
+      tags: [Users]
+      summary: Update user profile
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - $ref: '#/components/parameters/UserId'
+      responses:
+        '200': { description: OK }
+    delete:
+      tags: [Users]
+      summary: Delete user profile
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - $ref: '#/components/parameters/UserId'
+      responses:
+        '204': { description: Deleted }
+  /v2/accounts/{account_id}/users/{user_id}/events:
+    get:
+      tags: [Events]
+      summary: List user events
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - $ref: '#/components/parameters/UserId'
+      responses:
+        '200': { description: OK }
+    post:
+      tags: [Events]
+      summary: Track user event
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - $ref: '#/components/parameters/UserId'
+      responses:
+        '202': { description: Accepted }
+  /v2/accounts/{account_id}/groups/{group_id}/profile:
+    get:
+      tags: [Groups]
+      summary: Get group profile
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - $ref: '#/components/parameters/GroupId'
+      responses:
+        '200': { description: OK }
+    patch:
+      tags: [Groups]
+      summary: Update group profile
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - $ref: '#/components/parameters/GroupId'
+      responses:
+        '200': { description: OK }
+  /v2/accounts/{account_id}/groups/{group_id}/users:
+    patch:
+      tags: [Groups]
+      summary: Update group users
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - $ref: '#/components/parameters/GroupId'
+      responses:
+        '200': { description: OK }
+  /v2/accounts/{account_id}/import/profiles:
+    post:
+      tags: [Imports]
+      summary: Bulk import user profiles
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+      responses:
+        '202': { description: Accepted }
+  /v2/accounts/{account_id}/import/groups:
+    post:
+      tags: [Imports]
+      summary: Bulk import groups
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+      responses:
+        '202': { description: Accepted }
+  /v2/accounts/{account_id}/import/events:
+    post:
+      tags: [Imports]
+      summary: Bulk import events
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+      responses:
+        '202': { description: Accepted }
+  /v2/accounts/{account_id}/export/events:
+    post:
+      tags: [Exports]
+      summary: Bulk export events
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+      responses:
+        '202': { description: Accepted }
+  /v2/accounts/{account_id}/jobs:
+    get:
+      tags: [Jobs]
+      summary: List offline jobs
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+      responses:
+        '200': { description: OK }
+  /v2/accounts/{account_id}/jobs/{job_id}:
+    get:
+      tags: [Jobs]
+      summary: Get an offline job
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - name: job_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: OK }
+  /v2/accounts/{account_id}/pins:
+    get:
+      tags: [Pins]
+      summary: List pins
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+      responses:
+        '200': { description: OK }
+  /v2/accounts/{account_id}/pins/{pin_id}:
+    get:
+      tags: [Pins]
+      summary: Get a pin
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - name: pin_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: OK }
+  /v2/accounts/{account_id}/pins/{pin_id}/publish:
+    post:
+      tags: [Pins]
+      summary: Publish a pin
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - name: pin_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: OK }
+  /v2/accounts/{account_id}/pins/{pin_id}/unpublish:
+    post:
+      tags: [Pins]
+      summary: Unpublish a pin
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - name: pin_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: OK }
+  /v2/accounts/{account_id}/mobile:
+    get:
+      tags: [Mobile]
+      summary: List mobile experiences
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+      responses:
+        '200': { description: OK }
+  /v2/accounts/{account_id}/mobile/{mobile_id}:
+    get:
+      tags: [Mobile]
+      summary: Get a mobile experience
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - name: mobile_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: OK }
+  /v2/accounts/{account_id}/mobile/{mobile_id}/publish:
+    post:
+      tags: [Mobile]
+      summary: Publish a mobile experience
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - name: mobile_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: OK }
+  /v2/accounts/{account_id}/mobile/{mobile_id}/unpublish:
+    post:
+      tags: [Mobile]
+      summary: Unpublish a mobile experience
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - name: mobile_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: OK }
+  /v2/accounts/{account_id}/launchpads:
+    get:
+      tags: [Launchpads]
+      summary: List launchpads
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+      responses:
+        '200': { description: OK }
+  /v2/accounts/{account_id}/launchpads/{launchpad_id}:
+    get:
+      tags: [Launchpads]
+      summary: Get a launchpad
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - name: launchpad_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: OK }
+  /v2/accounts/{account_id}/launchpads/{launchpad_id}/publish:
+    post:
+      tags: [Launchpads]
+      summary: Publish a launchpad
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - name: launchpad_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: OK }
+  /v2/accounts/{account_id}/launchpads/{launchpad_id}/unpublish:
+    post:
+      tags: [Launchpads]
+      summary: Unpublish a launchpad
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - name: launchpad_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: OK }
+  /v2/accounts/{account_id}/banners:
+    get:
+      tags: [Banners]
+      summary: List banners
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+      responses:
+        '200': { description: OK }
+  /v2/accounts/{account_id}/banners/{banner_id}:
+    get:
+      tags: [Banners]
+      summary: Get a banner
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - name: banner_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: OK }
+  /v2/accounts/{account_id}/banners/{banner_id}/publish:
+    post:
+      tags: [Banners]
+      summary: Publish a banner
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - name: banner_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: OK }
+  /v2/accounts/{account_id}/banners/{banner_id}/unpublish:
+    post:
+      tags: [Banners]
+      summary: Unpublish a banner
+      parameters:
+        - $ref: '#/components/parameters/AccountId'
+        - name: banner_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: OK }
+components:
+  parameters:
+    AccountId:
+      name: account_id
+      in: path
+      required: true
+      description: Appcues account identifier
+      schema: { type: string }
+    UserId:
+      name: user_id
+      in: path
+      required: true
+      description: End-user identifier
+      schema: { type: string }
+    GroupId:
+      name: group_id
+      in: path
+      required: true
+      description: Group identifier
+      schema: { type: string }
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using API_KEY as username and API_SECRET as password.
+security:
+  - BasicAuth: []

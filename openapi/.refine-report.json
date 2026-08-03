@@ -1,0 +1,38 @@
+{
+  "provider": "appcues",
+  "sources": [
+    "appcues-banners-api-openapi.yml",
+    "appcues-events-api-openapi.yml",
+    "appcues-exports-api-openapi.yml",
+    "appcues-flows-api-openapi.yml",
+    "appcues-groups-api-openapi.yml",
+    "appcues-imports-api-openapi.yml",
+    "appcues-jobs-api-openapi.yml",
+    "appcues-launchpads-api-openapi.yml",
+    "appcues-mobile-api-openapi.yml",
+    "appcues-pins-api-openapi.yml",
+    "appcues-segments-api-openapi.yml",
+    "appcues-tags-api-openapi.yml",
+    "appcues-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "appcues-banners-api-openapi.yml",
+    "appcues-events-api-openapi.yml",
+    "appcues-exports-api-openapi.yml",
+    "appcues-flows-api-openapi.yml",
+    "appcues-groups-api-openapi.yml",
+    "appcues-imports-api-openapi.yml",
+    "appcues-jobs-api-openapi.yml",
+    "appcues-launchpads-api-openapi.yml",
+    "appcues-mobile-api-openapi.yml",
+    "appcues-pins-api-openapi.yml",
+    "appcues-segments-api-openapi.yml",
+    "appcues-tags-api-openapi.yml",
+    "appcues-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
