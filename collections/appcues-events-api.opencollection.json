@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Appcues Public Banners Events API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List user events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.appcues.com/v2/accounts/:account_id/users/:user_id/events",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "Appcues account identifier"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "End-user identifier"
+              }
+            ]
+          },
+          "docs": "List user events"
+        },
+        {
+          "info": {
+            "name": "Track user event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.appcues.com/v2/accounts/:account_id/users/:user_id/events",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "Appcues account identifier"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "End-user identifier"
+              }
+            ]
+          },
+          "docs": "Track user event"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

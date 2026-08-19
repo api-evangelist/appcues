@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Appcues Public Banners Imports API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Imports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Bulk import user profiles",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.appcues.com/v2/accounts/:account_id/import/profiles",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "Appcues account identifier"
+              }
+            ]
+          },
+          "docs": "Bulk import user profiles"
+        },
+        {
+          "info": {
+            "name": "Bulk import groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.appcues.com/v2/accounts/:account_id/import/groups",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "Appcues account identifier"
+              }
+            ]
+          },
+          "docs": "Bulk import groups"
+        },
+        {
+          "info": {
+            "name": "Bulk import events",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.appcues.com/v2/accounts/:account_id/import/events",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "Appcues account identifier"
+              }
+            ]
+          },
+          "docs": "Bulk import events"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

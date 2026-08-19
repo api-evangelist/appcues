@@ -1,0 +1,100 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Appcues Public Banners Users API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get user profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.appcues.com/v2/accounts/:account_id/users/:user_id/profile",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "Appcues account identifier"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "End-user identifier"
+              }
+            ]
+          },
+          "docs": "Get user profile"
+        },
+        {
+          "info": {
+            "name": "Update user profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.appcues.com/v2/accounts/:account_id/users/:user_id/profile",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "Appcues account identifier"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "End-user identifier"
+              }
+            ]
+          },
+          "docs": "Update user profile"
+        },
+        {
+          "info": {
+            "name": "Delete user profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.appcues.com/v2/accounts/:account_id/users/:user_id/profile",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "Appcues account identifier"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "End-user identifier"
+              }
+            ]
+          },
+          "docs": "Delete user profile"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

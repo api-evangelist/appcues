@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Appcues Public Banners Mobile API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Mobile",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List mobile experiences",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.appcues.com/v2/accounts/:account_id/mobile",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "Appcues account identifier"
+              }
+            ]
+          },
+          "docs": "List mobile experiences"
+        },
+        {
+          "info": {
+            "name": "Get a mobile experience",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.appcues.com/v2/accounts/:account_id/mobile/:mobile_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "Appcues account identifier"
+              },
+              {
+                "name": "mobile_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a mobile experience"
+        },
+        {
+          "info": {
+            "name": "Publish a mobile experience",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.appcues.com/v2/accounts/:account_id/mobile/:mobile_id/publish",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "Appcues account identifier"
+              },
+              {
+                "name": "mobile_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Publish a mobile experience"
+        },
+        {
+          "info": {
+            "name": "Unpublish a mobile experience",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.appcues.com/v2/accounts/:account_id/mobile/:mobile_id/unpublish",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "Appcues account identifier"
+              },
+              {
+                "name": "mobile_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Unpublish a mobile experience"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

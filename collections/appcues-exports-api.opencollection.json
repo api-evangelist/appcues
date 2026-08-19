@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Appcues Public Banners Exports API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Exports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Bulk export events",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.appcues.com/v2/accounts/:account_id/export/events",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "Appcues account identifier"
+              }
+            ]
+          },
+          "docs": "Bulk export events"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

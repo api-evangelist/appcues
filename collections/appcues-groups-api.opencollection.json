@@ -1,0 +1,100 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Appcues Public Banners Groups API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get group profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.appcues.com/v2/accounts/:account_id/groups/:group_id/profile",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "Appcues account identifier"
+              },
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "Group identifier"
+              }
+            ]
+          },
+          "docs": "Get group profile"
+        },
+        {
+          "info": {
+            "name": "Update group profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.appcues.com/v2/accounts/:account_id/groups/:group_id/profile",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "Appcues account identifier"
+              },
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "Group identifier"
+              }
+            ]
+          },
+          "docs": "Update group profile"
+        },
+        {
+          "info": {
+            "name": "Update group users",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.appcues.com/v2/accounts/:account_id/groups/:group_id/users",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "Appcues account identifier"
+              },
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "Group identifier"
+              }
+            ]
+          },
+          "docs": "Update group users"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

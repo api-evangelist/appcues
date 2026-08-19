@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Appcues Public Banners Flows API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Flows",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List flows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.appcues.com/v2/accounts/:account_id/flows",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "Appcues account identifier"
+              }
+            ]
+          },
+          "docs": "List flows"
+        },
+        {
+          "info": {
+            "name": "Get a flow",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.appcues.com/v2/accounts/:account_id/flows/:flow_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "Appcues account identifier"
+              },
+              {
+                "name": "flow_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a flow"
+        },
+        {
+          "info": {
+            "name": "Publish a flow",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.appcues.com/v2/accounts/:account_id/flows/:flow_id/publish",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "Appcues account identifier"
+              },
+              {
+                "name": "flow_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Publish a flow"
+        },
+        {
+          "info": {
+            "name": "Unpublish a flow",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.appcues.com/v2/accounts/:account_id/flows/:flow_id/unpublish",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "Appcues account identifier"
+              },
+              {
+                "name": "flow_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Unpublish a flow"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

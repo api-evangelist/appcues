@@ -1,0 +1,207 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Appcues Public Banners Segments API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Segments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List segments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.appcues.com/v2/accounts/:account_id/segments",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "Appcues account identifier"
+              }
+            ]
+          },
+          "docs": "List segments"
+        },
+        {
+          "info": {
+            "name": "Create a segment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.appcues.com/v2/accounts/:account_id/segments",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "Appcues account identifier"
+              }
+            ]
+          },
+          "docs": "Create a segment"
+        },
+        {
+          "info": {
+            "name": "Get a segment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.appcues.com/v2/accounts/:account_id/segments/:segment_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "Appcues account identifier"
+              },
+              {
+                "name": "segment_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a segment"
+        },
+        {
+          "info": {
+            "name": "Update a segment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.appcues.com/v2/accounts/:account_id/segments/:segment_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "Appcues account identifier"
+              },
+              {
+                "name": "segment_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a segment"
+        },
+        {
+          "info": {
+            "name": "Delete a segment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.appcues.com/v2/accounts/:account_id/segments/:segment_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "Appcues account identifier"
+              },
+              {
+                "name": "segment_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a segment"
+        },
+        {
+          "info": {
+            "name": "Add users to a segment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.appcues.com/v2/accounts/:account_id/segments/:segment_id/add_user_ids",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "Appcues account identifier"
+              },
+              {
+                "name": "segment_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Add users to a segment"
+        },
+        {
+          "info": {
+            "name": "Remove users from a segment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.appcues.com/v2/accounts/:account_id/segments/:segment_id/remove_user_ids",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "Appcues account identifier"
+              },
+              {
+                "name": "segment_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove users from a segment"
+        },
+        {
+          "info": {
+            "name": "Export segment membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.appcues.com/v2/accounts/:account_id/segments/:segment_id/segment_membership_export",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "Appcues account identifier"
+              },
+              {
+                "name": "segment_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Export segment membership"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
