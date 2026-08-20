@@ -63,6 +63,8 @@ apis:
   humanURL: https://api.appcues.com/
   baseURL: https://api.appcues.com
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -73,6 +75,8 @@ apis:
   humanURL: https://api.appcues.com/
   baseURL: https://api.appcues.com
   tags:
+  - Export
+  tags_raw:
   - Exports
   properties:
   - type: OpenAPI
@@ -93,6 +97,8 @@ apis:
   humanURL: https://api.appcues.com/
   baseURL: https://api.appcues.com
   tags:
+  - Group
+  tags_raw:
   - Groups
   properties:
   - type: OpenAPI
@@ -113,6 +119,8 @@ apis:
   humanURL: https://api.appcues.com/
   baseURL: https://api.appcues.com
   tags:
+  - Job
+  tags_raw:
   - Jobs
   properties:
   - type: OpenAPI
@@ -173,6 +181,8 @@ apis:
   humanURL: https://api.appcues.com/
   baseURL: https://api.appcues.com
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
