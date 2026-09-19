@@ -100,6 +100,8 @@ apis:
   humanURL: https://api.appcues.com/
   baseURL: https://api.appcues.com
   tags:
+  - Flow
+  tags_raw:
   - Flows
   properties:
   - type: OpenAPI
@@ -122,6 +124,8 @@ apis:
   humanURL: https://api.appcues.com/
   baseURL: https://api.appcues.com
   tags:
+  - Import
+  tags_raw:
   - Imports
   properties:
   - type: OpenAPI
