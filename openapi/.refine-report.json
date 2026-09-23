@@ -1,19 +1,7 @@
 {
   "provider": "appcues",
   "sources": [
-    "appcues-banners-api-openapi.yml",
-    "appcues-events-api-openapi.yml",
-    "appcues-exports-api-openapi.yml",
-    "appcues-flows-api-openapi.yml",
-    "appcues-groups-api-openapi.yml",
-    "appcues-imports-api-openapi.yml",
-    "appcues-jobs-api-openapi.yml",
-    "appcues-launchpads-api-openapi.yml",
-    "appcues-mobile-api-openapi.yml",
-    "appcues-pins-api-openapi.yml",
-    "appcues-segments-api-openapi.yml",
-    "appcues-tags-api-openapi.yml",
-    "appcues-users-api-openapi.yml"
+    "_original/appcues-openapi.yml"
   ],
   "outputs": [
     "appcues-banners-api-openapi.yml",
@@ -33,6 +21,24 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "appcues-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "appcues-banners-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "appcues-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "appcues-exports-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "appcues-flows-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "appcues-groups-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "appcues-imports-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "appcues-jobs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "appcues-launchpads-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "appcues-mobile-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "appcues-pins-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "appcues-segments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "appcues-tags-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "appcues-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

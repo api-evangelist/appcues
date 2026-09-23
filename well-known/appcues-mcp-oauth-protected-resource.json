@@ -1,0 +1,1 @@
+{"resource":"https://mcp.appcues.com/","authorization_servers":["https://mcp.appcues.com"],"bearer_methods_supported":["header"],"resource_documentation":"https://mcp.appcues.com/.well-known/oauth-authorization-server","resource_signing_alg_values_supported":["RS256"]}

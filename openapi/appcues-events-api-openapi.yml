@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Appcues Public Banners Events API
+  title: Appcues Public Events API
   version: '2.0'
   description: 'The Appcues Public API exposes programmatic access to Appcues flows,
 
@@ -10,9 +10,7 @@ info:
 
     supported. Authentication uses HTTP Basic with an API key as the username
 
-    and API secret as the password.
-
-    '
+    and API secret as the password.'
   contact:
     name: Appcues Developers
     url: https://docs.appcues.com/dev-overview/
@@ -37,6 +35,8 @@ paths:
       responses:
         '200':
           description: OK
+      operationId: getV2AccountsByAccountIdUsersByUserIdEvents
+      x-operation-id-source: derived
     post:
       tags:
       - Events
@@ -47,6 +47,8 @@ paths:
       responses:
         '202':
           description: Accepted
+      operationId: postV2AccountsByAccountIdUsersByUserIdEvents
+      x-operation-id-source: derived
 components:
   parameters:
     UserId:

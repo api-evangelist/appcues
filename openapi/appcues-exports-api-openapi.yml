@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Appcues Public Banners Exports API
+  title: Appcues Public Exports API
   version: '2.0'
   description: 'The Appcues Public API exposes programmatic access to Appcues flows,
 
@@ -10,9 +10,7 @@ info:
 
     supported. Authentication uses HTTP Basic with an API key as the username
 
-    and API secret as the password.
-
-    '
+    and API secret as the password.'
   contact:
     name: Appcues Developers
     url: https://docs.appcues.com/dev-overview/
@@ -36,6 +34,8 @@ paths:
       responses:
         '202':
           description: Accepted
+      operationId: postV2AccountsByAccountIdExportEvents
+      x-operation-id-source: derived
 components:
   parameters:
     AccountId:

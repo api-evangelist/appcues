@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Appcues Public Banners Flows API
+  title: Appcues Public Flows API
   version: '2.0'
   description: 'The Appcues Public API exposes programmatic access to Appcues flows,
 
@@ -10,9 +10,7 @@ info:
 
     supported. Authentication uses HTTP Basic with an API key as the username
 
-    and API secret as the password.
-
-    '
+    and API secret as the password.'
   contact:
     name: Appcues Developers
     url: https://docs.appcues.com/dev-overview/
@@ -36,6 +34,8 @@ paths:
       responses:
         '200':
           description: OK
+      operationId: getV2AccountsByAccountIdFlows
+      x-operation-id-source: derived
   /v2/accounts/{account_id}/flows/{flow_id}:
     get:
       tags:
@@ -51,6 +51,8 @@ paths:
       responses:
         '200':
           description: OK
+      operationId: getV2AccountsByAccountIdFlowsByFlowId
+      x-operation-id-source: derived
   /v2/accounts/{account_id}/flows/{flow_id}/publish:
     post:
       tags:
@@ -66,6 +68,8 @@ paths:
       responses:
         '200':
           description: OK
+      operationId: postV2AccountsByAccountIdFlowsByFlowIdPublish
+      x-operation-id-source: derived
   /v2/accounts/{account_id}/flows/{flow_id}/unpublish:
     post:
       tags:
@@ -81,6 +85,8 @@ paths:
       responses:
         '200':
           description: OK
+      operationId: postV2AccountsByAccountIdFlowsByFlowIdUnpublish
+      x-operation-id-source: derived
 components:
   parameters:
     AccountId:

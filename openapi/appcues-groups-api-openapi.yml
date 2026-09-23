@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Appcues Public Banners Groups API
+  title: Appcues Public Groups API
   version: '2.0'
   description: 'The Appcues Public API exposes programmatic access to Appcues flows,
 
@@ -10,9 +10,7 @@ info:
 
     supported. Authentication uses HTTP Basic with an API key as the username
 
-    and API secret as the password.
-
-    '
+    and API secret as the password.'
   contact:
     name: Appcues Developers
     url: https://docs.appcues.com/dev-overview/
@@ -37,6 +35,8 @@ paths:
       responses:
         '200':
           description: OK
+      operationId: getV2AccountsByAccountIdGroupsByGroupIdProfile
+      x-operation-id-source: derived
     patch:
       tags:
       - Groups
@@ -47,6 +47,8 @@ paths:
       responses:
         '200':
           description: OK
+      operationId: patchV2AccountsByAccountIdGroupsByGroupIdProfile
+      x-operation-id-source: derived
   /v2/accounts/{account_id}/groups/{group_id}/users:
     patch:
       tags:
@@ -58,20 +60,22 @@ paths:
       responses:
         '200':
           description: OK
+      operationId: patchV2AccountsByAccountIdGroupsByGroupIdUsers
+      x-operation-id-source: derived
 components:
   parameters:
-    AccountId:
-      name: account_id
-      in: path
-      required: true
-      description: Appcues account identifier
-      schema:
-        type: string
     GroupId:
       name: group_id
       in: path
       required: true
       description: Group identifier
+      schema:
+        type: string
+    AccountId:
+      name: account_id
+      in: path
+      required: true
+      description: Appcues account identifier
       schema:
         type: string
   securitySchemes:
