@@ -58,8 +58,6 @@ apis:
     url: https://api.appcues.com/
   - type: Developers
     url: https://docs.appcues.com/dev-overview/
-  - url: graphql/appcues-graphql.md
-    type: GraphQL
 - aid: appcues:appcues-banners-api
   name: Appcues Banners API
   description: The Banners API from Appcues — 4 operation(s) for banners.
