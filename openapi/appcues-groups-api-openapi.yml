@@ -64,18 +64,18 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
-    GroupId:
-      name: group_id
-      in: path
-      required: true
-      description: Group identifier
-      schema:
-        type: string
     AccountId:
       name: account_id
       in: path
       required: true
       description: Appcues account identifier
+      schema:
+        type: string
+    GroupId:
+      name: group_id
+      in: path
+      required: true
+      description: Group identifier
       schema:
         type: string
   securitySchemes:

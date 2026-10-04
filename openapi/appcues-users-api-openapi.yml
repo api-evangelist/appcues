@@ -63,18 +63,18 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
-    UserId:
-      name: user_id
-      in: path
-      required: true
-      description: End-user identifier
-      schema:
-        type: string
     AccountId:
       name: account_id
       in: path
       required: true
       description: Appcues account identifier
+      schema:
+        type: string
+    UserId:
+      name: user_id
+      in: path
+      required: true
+      description: End-user identifier
       schema:
         type: string
   securitySchemes:
