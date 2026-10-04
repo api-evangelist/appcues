@@ -203,6 +203,9 @@ apis:
   - type: OpenAPI
     url: openapi/appcues-users-api-openapi.yml
 common:
+- type: CapabilityMap
+  url: capabilities/appcues-capability-edges.yml
+  name: Appcues Business Capability Map
 - type: AgenticAccess
   url: agentic-access/appcues-agentic-access.yml
 - type: DomainSecurity
