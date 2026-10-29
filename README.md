@@ -1,4 +1,4 @@
-# Appcues (appcues)
+# Appcues
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,54 +66,155 @@
 
 Appcues is a product-led growth platform for in-app onboarding, announcements, surveys, and user engagement experiences.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/appcues/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/appcues/refs/heads/main/apis.yml)
+**Areas:** Product · Onboarding · In-App Guidance · Analytics · Customer Success
 
-## Tags
+## Appcues on APIs.io
 
-- Product
-- Onboarding
-- In-App Guidance
-- Analytics
-- Customer Success
+Everything profiled for Appcues is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/appcues/](https://apis.io/providers/appcues/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (14)
 
-- **Created:** 2026-05-08
-- **Modified:** 2026-05-08
+- [Appcues Public API](https://apis.io/apis/appcues/appcues-public-api/) — Appcues Public API exposes flows, mobile experiences, pins, launchpads, banners, checklists, embeds, NPS, segments, users, groups, events, jobs, and SDK key…
+- [Appcues Banners API](https://apis.io/apis/appcues/appcues-banners-api/) — The Banners API from Appcues — 4 operation(s) for banners.
+- [Appcues Events API](https://apis.io/apis/appcues/appcues-events-api/) — The Events API from Appcues — 1 operation(s) for events.
+- [Appcues Exports API](https://apis.io/apis/appcues/appcues-exports-api/) — The Exports API from Appcues — 1 operation(s) for exports.
+- [Appcues Flows API](https://apis.io/apis/appcues/appcues-flows-api/) — The Flows API from Appcues — 4 operation(s) for flows.
+- [Appcues Groups API](https://apis.io/apis/appcues/appcues-groups-api/) — The Groups API from Appcues — 2 operation(s) for groups.
+- [Appcues Imports API](https://apis.io/apis/appcues/appcues-imports-api/) — The Imports API from Appcues — 3 operation(s) for imports.
+- [Appcues Jobs API](https://apis.io/apis/appcues/appcues-jobs-api/) — The Jobs API from Appcues — 2 operation(s) for jobs.
+- [Appcues Launchpads API](https://apis.io/apis/appcues/appcues-launchpads-api/) — The Launchpads API from Appcues — 4 operation(s) for launchpads.
+- [Appcues Mobile API](https://apis.io/apis/appcues/appcues-mobile-api/) — The Mobile API from Appcues — 4 operation(s) for mobile.
+- [Appcues Pins API](https://apis.io/apis/appcues/appcues-pins-api/) — The Pins API from Appcues — 4 operation(s) for pins.
+- [Appcues Segments API](https://apis.io/apis/appcues/appcues-segments-api/) — The Segments API from Appcues — 5 operation(s) for segments.
+- [Appcues Tags API](https://apis.io/apis/appcues/appcues-tags-api/) — The Tags API from Appcues — 2 operation(s) for tags.
+- [Appcues Users API](https://apis.io/apis/appcues/appcues-users-api/) — The Users API from Appcues — 1 operation(s) for users.
 
-## APIs
+### Published properties
 
-### Appcues Public API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Appcues Public API exposes flows, mobile experiences, pins, launchpads, banners, checklists, embeds, NPS, segments, users, groups, events, jobs, and SDK key management. US and EU regions are supported.
+#### GraphQL (1)
 
-- **Human URL:** [https://api.appcues.com/](https://api.appcues.com/)
-- **Base URL:** `https://api.appcues.com`
+GraphQL schemas.
 
-#### Tags
+- [Moved to /providers/appcues/](https://apis.io/graphqls/appcues/appcues-graphql/)
 
-- Product
-- Onboarding
-- REST
+#### MCP servers (1)
 
-#### Properties
+Model Context Protocol servers that expose the API to agents.
 
-- [Documentation](https://api.appcues.com/)
-- [Developers](https://docs.appcues.com/dev-overview/)
-- [Postman Collection](collections/appcues.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/appcues.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [appcues](https://apis.io/servers/appcues/appcues/)
 
-## Common Properties
+#### Agentic access (1)
 
-- [GitHub Organization](https://github.com/appcues)
-- [LinkedIn](https://www.linkedin.com/company/appcues)
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Appcues Agentic Access](https://apis.io/agentic-access/appcues/appcues-agentic-access/)
+
+#### Collections (14)
+
+Postman and Open Collection request collections.
+
+- [Appcues Public API](https://apis.io/collections/appcues/open-appcues/)
+- [Appcues Public Banners API](https://apis.io/collections/appcues/open-appcues-banners-api/)
+- [Appcues Public Banners Events API](https://apis.io/collections/appcues/open-appcues-events-api/)
+- [Appcues Public Banners Exports API](https://apis.io/collections/appcues/open-appcues-exports-api/)
+- [Appcues Public Banners Flows API](https://apis.io/collections/appcues/open-appcues-flows-api/)
+- [Appcues Public Banners Groups API](https://apis.io/collections/appcues/open-appcues-groups-api/)
+- [Appcues Public Banners Imports API](https://apis.io/collections/appcues/open-appcues-imports-api/)
+- [Appcues Public Banners Jobs API](https://apis.io/collections/appcues/open-appcues-jobs-api/)
+- [Appcues Public Banners Launchpads API](https://apis.io/collections/appcues/open-appcues-launchpads-api/)
+- [Appcues Public Banners Mobile API](https://apis.io/collections/appcues/open-appcues-mobile-api/)
+- [Appcues Public Banners Pins API](https://apis.io/collections/appcues/open-appcues-pins-api/)
+- [Appcues Public Banners Segments API](https://apis.io/collections/appcues/open-appcues-segments-api/)
+- [Appcues Public Banners Tags API](https://apis.io/collections/appcues/open-appcues-tags-api/)
+- [Appcues Public Banners Users API](https://apis.io/collections/appcues/open-appcues-users-api/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Appcues Authentication](https://apis.io/security/appcues/appcues-authentication/)
+- [Appcues Domain Security](https://apis.io/security/appcues/appcues-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Appcues Plans Pricing](https://apis.io/plans/appcues/appcues-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Appcues Rate Limits](https://apis.io/rate-limits/appcues/appcues-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Appcues Finops](https://apis.io/finops/appcues/appcues-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.appcues.com/)
 - [Documentation](https://api.appcues.com/)
-- [Plans](plans/appcues-plans-pricing.yml)
-- [Rate Limits](rate-limits/appcues-rate-limits.yml)
-- [Fin Ops](finops/appcues-finops.yml)
+- [Blog](https://www.appcues.com/blog)
+- [GitHub](https://github.com/appcues)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 23.0** — emerging · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 60.0 |
+| Contract quality | 45.3 |
+| Contract governance | 0.0 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 23.8 |
+| Access clarity | 5.3 |
+
+**Agent readiness 43.9** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/appcues/](https://apis.io/providers/appcues/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Appcues: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/appcues/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
